@@ -1,31 +1,11 @@
-import images from './gallery-items.js';
 
-const gallery=document.querySelector('.gallery');
 const body=document.querySelector('body');
 const lightbox =document.querySelector('.js-lightbox');
 const lightboxImage=document.querySelector('.lightbox__image');
 const lightboxCloseBtn=document.querySelector(`button[data-action="close-lightbox"]`);
 const lightboxOverlay=document.querySelector('.lightbox__overlay');
 
-let index=0;
-const getIndex=()=>{
-  for(let i=0; i<images.length; i+=1){
-    return index+=1;
-  }
-}
-
-const allImages=images.map(({preview,original,description})=>
-      `<li class="gallery__item">
-         <a class="gallery__link" href=${original}>
-            <img class="gallery__image" src=${preview} 
-            data-source=${original} alt=${description}
-            data-index=${getIndex()-1}>
-         </a>
-      </li>`
-)
-
-gallery.innerHTML=allImages.join('');
-
+import {gallery, allImages} from './addgallery.js';
 
 const onImageClick=(e)=>{
   e.preventDefault();
